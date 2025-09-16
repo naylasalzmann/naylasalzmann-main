@@ -10,6 +10,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const blogIsReady = false;
 ---
 
 <!doctype html>
@@ -84,12 +86,18 @@ const posts = (await getCollection('blog')).sort(
 					font-size: 1.563em;
 				}
 			}
+			.blog-coming {
+				font-size: 1.5rem;
+				text-align: center;
+				padding: 4rem 0;
+			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<section>
+				{!blogIsReady ? <div class="blog-coming">Blog coming soon. Stay tuned!</div> :
 				<ul>
 					{
 						posts.map((post) => (
@@ -107,6 +115,7 @@ const posts = (await getCollection('blog')).sort(
 						))
 					}
 				</ul>
+				}
 			</section>
 		</main>
 		<Footer />
