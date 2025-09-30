@@ -4,7 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import MainImage from '../assets/home-anymore.jpg';
+import MainImage from '../assets/funny-pills.png';
 ---
 
 <!doctype html>
@@ -13,24 +13,22 @@ import MainImage from '../assets/home-anymore.jpg';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			.container img {
-				max-height: 700px;
 				object-fit: cover;
 				object-position: 50% 70%;
 			}
-
 			.container {
-				position: relative;
 				text-align: center;
 			}
-
+			.text-wrapper {
+				margin: 2em 0 2em 0;
+			}
 			.title {
-				position: absolute;
-				top: 30%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				color: peachpuff;
-				display: inline-block;
-				width: 100%;
+				color: #b17101;
+			}
+
+			.title a {
+				color: #b17101;
+				text-decoration: underline;
 			}
 		</style>
 	</head>
@@ -38,8 +36,14 @@ import MainImage from '../assets/home-anymore.jpg';
 		<Header />
 		<main>
 			<div class="container">
-				<h4 class="title">Debut album <span class="italic">"Home Anymore"</span> coming soon</h4>
-				{MainImage && <Image src={MainImage} alt="Home Anymore album cover" />}
+				<div class="text-wrapper">
+					<h3 class="title">
+						New Single <a href="https://distrokid.com/hyperfollow/naylasalzmann/funny-pills" target="_blank">Funny Pills</a>
+					</h3>
+				</div>
+				<div class="image-wrapper">
+					{MainImage && <Image class="release-img" src={MainImage} alt="Album cover" />}
+				</div>
 			</div>
 		</main>
 		<Footer />
