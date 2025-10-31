@@ -1,10 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import MainImage from '../assets/funny-pills.png';
+import { Image } from "astro:assets";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import MainImage from "../assets/funny-pills.png";
+import Newsletter from "../components/Newsletter.astro";
 ---
 
 <!doctype html>
@@ -13,6 +14,7 @@ import MainImage from '../assets/funny-pills.png';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			.container img {
+				/* max-height: 700px; */
 				object-fit: cover;
 				object-position: 50% 70%;
 			}
@@ -29,22 +31,41 @@ import MainImage from '../assets/funny-pills.png';
 			.title a {
 				color: #b17101;
 				text-decoration: underline;
+				font-weight: bold;
 			}
 		</style>
 	</head>
-	<body>
+	<body class="dark">
 		<Header />
 		<main>
-			<div class="container">
+			<div class="bg-emerald-500 text-white p-4 rounded">
+				Tailwind 4 is working!
+			</div>
+			<div class="container my-8">
 				<div class="text-wrapper">
 					<h3 class="title">
-						New Single <a href="https://distrokid.com/hyperfollow/naylasalzmann/funny-pills" target="_blank">Funny Pills</a>
+						New Single 
+						<a
+							href="https://distrokid.com/hyperfollow/naylasalzmann/funny-pills"
+							target="_blank"
+						>
+							Funny Pills
+						</a>
 					</h3>
 				</div>
 				<div class="image-wrapper">
-					{MainImage && <Image class="release-img" src={MainImage} alt="Album cover" />}
+					{
+						MainImage && (
+							<Image
+								class="release-img"
+								src={MainImage}
+								alt="Album cover"
+							/>
+						)
+					}
 				</div>
 			</div>
+			<Newsletter />
 		</main>
 		<Footer />
 	</body>

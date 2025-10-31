@@ -1,12 +1,9 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import "tailwindcss";
 
 :root {
-	--accent: #2337ff;
+	--accent: #d49f0f;
 	--accent-dark: #000d8a;
+	--yellow: #aa8800ff;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -35,11 +32,12 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
+	/* background: linear-gradient(var(--gray-dark-gradient)) no-repeat; */
+	background: rgb(var(--gray-dark));
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
+	/* color: rgb(var(--accent-dark)); */
 	font-size: 19px;
 	line-height: 1.7;
 }
@@ -56,7 +54,7 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
+	/* color: rgb(var(--black)); */
 	line-height: 1.2;
 }
 h1 {
