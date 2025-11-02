@@ -1,34 +1,78 @@
 ---
 import Layout from "../layouts/ContentPage.astro";
+import { Icon } from 'astro-icon/components';
 ---
 
-<Layout title="Music" description="Music page">
-    <div class="container">
-        <p>music by nayla salzmann</p>
-
-        <h5>Own forever on Bandcamp</h5>
-        <iframe
-            style="border: 0; width: 100%; height: 120px;"
-            src="https://bandcamp.com/EmbeddedPlayer/track=3952500168/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/"
-            seamless
-            ><a
-            href="https://naylasalzmann.bandcamp.com/track/funny-pills">Funny
-            Pills by Nayla Salzmann</a>
-        </iframe>
+<Layout description="Music page">
+    <div class="bg-orange-900 text-white p-4 rounded text-sm">
+        <h5 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Welcome to HOME ANYMORE</h5>
+        <p class="text-sm">I'm Nayla Salzmann, a singer-songwriter and guitarist. 
+            I wrote and performed these songs. I also made this page — 
+            I'm a software engineer by profession, and that's how I funded this work. Now I own all the rights to my music
+                and I'm releasing my first album independently. I prepared a little experience for you!</p>
         
-        <h5>Stream on Spotify</h5>
-        <iframe
-            data-testid="embed-iframe"
-            style="border-radius:12px"
-            src="https://open.spotify.com/embed/track/7J7AKyvwOUQdmTxcyDJgDz?utm_source=generator"
-            width="100%"
-            height="152"
-            frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-        </iframe>
+        <ol class="list-decimal list-inside space-y-1">
+            <b>Steps:</b>
+            <li> Hit play on the album on your preferred streaming platform using one of the players below.</li>
+            <li> Take a picture (or make a video) of the postcard — maybe show who gave it to you or where it found you.</li>
+            <li> Post it on social media, tag me @naylasalzmann (TikTok and Instagram), and add your favorite song from the album.</li>
+        </ol>
+        <div class="mt-4">
+            <p>I'll add you to my VIP listeners list and send you a little gift myself as a thank-you for supporting my music journey!
+            <br>Enjoy the music — and keep an eye out for your gift :)</p>
+            <p>
+                If you happen to fall in love with the album, consider buying it on Bandcamp (I only printed a few copies and they have lost of inclusions and cool things). Every purchase helps me create more music for you!
+            </p>
+            <p>
+                Don't forget to follow me on social media @naylasalzmann to stay updated with my music journey and future releases. <br> Thank you and enjoy the journey! <br> - Nayla
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <div class="my-8">
+            <h3 class="text-2xl font-bold mb-4">Home Anymore (Album)</h3>
+        </div>
+        <ul class="text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <li class="px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                <h5>Own forever on Bandcamp</h5>
+                <iframe
+                    style="border: 0; width: 100%; height: 120px;"
+                    src="https://bandcamp.com/EmbeddedPlayer/track=3952500168/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/"
+                    seamless
+                >
+                    <a href="https://naylasalzmann.bandcamp.com/track/funny-pills">Funny Pills by Nayla Salzmann</a>
+                </iframe>
+            </li>
+            <li class="px-4 py-2 border-b border-gray-200 dark:border-gray-600">
+                <span>Stream on Spotify</span>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/7xt8Guu9Ql09a5sxSOrb8u?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </li>
+            <li class="px-4 py-2 border-b border-gray-200 dark:border-gray-600">
+                <h5>Stream on Apple Music</h5>
+                <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/never-meant-single/1797658287"></iframe>
+            </li>
+            <li class="px-4 py-2 rounded-b-lg dark:border-gray-600">
+                <a href="YOUR_YOUTUBE_LINK"
+                    class="flex items-center w-full px-4 py-8 rounded-t-lg border-2 border-gray-600 
+                        hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-orange-900 
+                        focus:text-orange-900 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+
+                    <!-- Icon -->
+                    <Icon name="youtube" size={48} class="flex-shrink-0" />
+
+                    <!-- Text -->
+                    <span class="ml-8 text-lg font-medium">Stream on YouTube Music</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
 
         <iframe style="border: 0; width: 400px; height: 439px;" src="https://bandcamp.com/EmbeddedPlayer/album=1720838648/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/tracklist=true/tracks=237605512,3337753226,782712719,1861412692,1119899697,1195230804,463752771,1702264192,2557443985/esig=3e2b026d0d4c58a84859701b950c3ffb/" seamless><a href="https://naylasalzmann.bandcamp.com/album/home-anymore">Home Anymore by Nayla Salzmann</a></iframe>
+    
+        <div class="bg-orange-900 text-white p-4 rounded text-sm">
+            <p>If you're a musician, I'm forming a band for touring around Europe, reach out!</p>
+        </div>
     </div>
 </Layout>

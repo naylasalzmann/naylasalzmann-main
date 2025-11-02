@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -20,17 +19,17 @@ const { title, description, heroImage } = Astro.props;
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
-				padding: 1em;
+				padding: 0.25em;
 				color: rgb(var(--gray-light));
 			}
 			.title {
 				margin-bottom: 0.5em;
-				padding: 1em 0;
+				padding: 0.1em 0;
 				text-align: center;
 				line-height: 1;
 			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
+			.title h5 {
+				margin: 0 0 0.2em 0;
 			}
 			.last-updated-on {
 				font-style: italic;
@@ -43,10 +42,12 @@ const { title, description, heroImage } = Astro.props;
 		<main>
 			<article>
 				<div class="prose">
-					<div class="title">
-						<h3>{title}</h3>
-						<hr />
-					</div>
+					{title && (
+						<div class="title">
+							<h5>{title}</h5>
+							<hr />
+						</div>
+					)}
 					<slot />
 				</div>
 			</article>
