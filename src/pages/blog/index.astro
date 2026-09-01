@@ -1,10 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
@@ -14,110 +12,104 @@ const posts = (await getCollection('blog')).sort(
 const blogIsReady = false;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<style>
+		.blog-list {
+			width: 960px;
+			max-width: 100%;
+			margin: 0 auto;
+		}
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2rem;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		ul li {
+			width: calc(50% - 1rem);
+		}
+		ul li * {
+			text-decoration: none;
+			transition: 0.2s ease;
+		}
+		ul li:first-child {
+			width: 100%;
+			margin-bottom: 1rem;
+			text-align: center;
+		}
+		ul li:first-child img {
+			width: 100%;
+		}
+		ul li:first-child .title {
+			font-size: 2.369rem;
+		}
+		ul li img {
+			margin-bottom: 0.5rem;
+			border-radius: 12px;
+		}
+		ul li a {
+			display: block;
+		}
+		.title {
+			margin: 0;
+			color: rgb(var(--black));
+			line-height: 1;
+		}
+		.date {
+			margin: 0;
+			color: rgb(var(--gray));
+		}
+		ul li a:hover h4,
+		ul li a:hover .date {
+			color: rgb(var(--accent));
+		}
+		ul a:hover img {
+			box-shadow: var(--box-shadow);
+		}
+		@media (max-width: 720px) {
 			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
+				gap: 0.5em;
 			}
 			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
+				width: 100%;
+				text-align: center;
 			}
 			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
+				margin-bottom: 0;
 			}
 			ul li:first-child .title {
-				font-size: 2.369rem;
+				font-size: 1.563em;
 			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
+		}
+		.blog-coming {
+			font-size: 1.5rem;
+			text-align: center;
+			padding: 4rem 0;
+		}
+	</style>
+	<div class="blog-list">
+		<section>
+			{!blogIsReady ? <div class="blog-coming">Blog coming soon. Stay tuned!</div> :
+			<ul>
+				{
+					posts.map((post) => (
+						<li>
+							<a href={`/blog/${post.id}/`}>
+								{post.data.heroImage && (
+									<Image width={720} height={360} src={post.data.heroImage} alt="" />
+								)}
+								<h4 class="title">{post.data.title}</h4>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+							</a>
+						</li>
+					))
 				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
+			</ul>
 			}
-			.blog-coming {
-				font-size: 1.5rem;
-				text-align: center;
-				padding: 4rem 0;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				{!blogIsReady ? <div class="blog-coming">Blog coming soon. Stay tuned!</div> :
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-				}
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+		</section>
+	</div>
+</BaseLayout>

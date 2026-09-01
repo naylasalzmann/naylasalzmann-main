@@ -4,69 +4,124 @@ import HeaderLink from './HeaderLink.astro';
 import { Icon } from 'astro-icon/components'
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
+<header class="sidebar">
+	<input type="checkbox" id="nav-toggle" class="sr-only" />
+	<div class="sidebar-header">
+		<h2 class="site-title"><a href="/">{SITE_TITLE}</a></h2>
+		<label for="nav-toggle" class="hamburger" aria-label="Toggle navigation menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</label>
+	</div>
+	<div class="nav-panel">
+		<nav class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/tour">Tour</HeaderLink>
 			<HeaderLink href="/music">Music</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
-		</div>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+		</nav>
 		<div class="social-links">
 			<a href="https://www.youtube.com/@naylasalzmann" target="_blank">
 				<span class="sr-only">Follow Nayla Salzmann on YouTube</span>
-				<Icon name="youtube" size={32} />
+				<Icon name="youtube" size={28} />
 			</a>
 			<a href="https://open.spotify.com/artist/41J6ppdYoUtSogli4x9Jxo" target="_blank">
 				<span class="sr-only">Listen to Nayla Salzmann on Spotify</span>
-				<Icon name="spotify" size={32} />
+				<Icon name="spotify" size={28} />
 			</a>
 			<a href="https://naylasalzmann.bandcamp.com" target="_blank">
 				<span class="sr-only">Follow Nayla Salzmann on Bandcamp</span>
-				<Icon name="bandcamp" size={32} />
+				<Icon name="bandcamp" size={28} />
 			</a>
 		</div>
-	</nav>
+	</div>
 </header>
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: rgb(157, 69, 39);
+	.sidebar {
+		flex: 0 0 240px;
+		width: 240px;
+		background: var(--brand-brown);
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
+	.sidebar-header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		padding: 1.5em 1em 1em;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
+	.site-title {
+		margin: 0;
+		font-size: 1.1em;
+	}
+	.site-title a {
+		color: #fff;
 		text-decoration: none;
 	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--yellow);
+	.nav-panel {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		padding: 0 1em 1.5em;
 	}
-	.social-links,
+	.internal-links {
+		display: flex;
+		flex-direction: column;
+	}
+	.social-links {
+		display: flex;
+		gap: 0.75em;
+		margin-top: auto;
+		padding-top: 1.5em;
+	}
 	.social-links a {
+		color: #fff;
 		display: flex;
 	}
+	#nav-toggle {
+		display: none;
+	}
+	.hamburger {
+		display: none;
+		flex-direction: column;
+		gap: 4px;
+		cursor: pointer;
+	}
+	.hamburger span {
+		width: 22px;
+		height: 2px;
+		background: #fff;
+	}
+	#nav-toggle:focus ~ .sidebar-header .hamburger {
+		outline: 2px solid #fff;
+		outline-offset: 2px;
+	}
 	@media (max-width: 720px) {
-		.social-links {
+		.sidebar {
+			flex: 0 0 auto;
+			width: 100%;
+			height: auto;
+			position: static;
+		}
+		#nav-toggle {
+			display: block;
+		}
+		.hamburger {
+			display: flex;
+		}
+		.nav-panel {
 			display: none;
+			padding: 0 1em 1em;
+		}
+		#nav-toggle:checked ~ .nav-panel {
+			display: flex;
 		}
 	}
 </style>

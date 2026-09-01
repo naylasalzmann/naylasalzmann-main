@@ -1,57 +1,40 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from './BaseLayout.astro';
 
 const { title, description, heroImage } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 0.25em;
-				color: rgb(var(--gray-light));
-			}
-			.title {
-				margin-bottom: 0.5em;
-				padding: 0.1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h5 {
-				margin: 0 0 0.2em 0;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="prose">
-					{title && (
-						<div class="title">
-							<h5>{title}</h5>
-							<hr />
-						</div>
-					)}
-					<slot />
+<BaseLayout title={title} description={description}>
+	<style>
+		.prose {
+			width: 720px;
+			max-width: calc(100% - 2em);
+			margin: auto;
+			padding: 0.25em;
+			color: rgb(var(--gray-light));
+		}
+		.title {
+			margin-bottom: 0.5em;
+			padding: 0.1em 0;
+			text-align: center;
+			line-height: 1;
+		}
+		.title h5 {
+			margin: 0 0 0.2em 0;
+		}
+		.last-updated-on {
+			font-style: italic;
+		}
+	</style>
+	<article>
+		<div class="prose">
+			{title && (
+				<div class="title">
+					<h5>{title}</h5>
+					<hr />
 				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+			)}
+			<slot />
+		</div>
+	</article>
+</BaseLayout>

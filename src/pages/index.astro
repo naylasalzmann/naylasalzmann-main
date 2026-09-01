@@ -1,69 +1,74 @@
 ---
 import { Image } from "astro:assets";
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import MainImage from "../assets/funny-pills.png";
 import Newsletter from "../components/Newsletter.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			.container img {
-				/* max-height: 700px; */
-				object-fit: cover;
-				object-position: 50% 70%;
-			}
-			.container {
-				text-align: center;
-			}
-			.text-wrapper {
-				margin: 2em 0 2em 0;
-			}
-			.title {
-				color: #b17101;
-			}
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<style>
+		.container {
+			max-width: 720px;
+			margin-inline: auto;
+			text-align: center;
+		}
+		.container img {
+			object-fit: cover;
+			object-position: 50% 70%;
+		}
+		.text-wrapper {
+			margin: 2em 0 2em 0;
+		}
+		.eyebrow {
+			margin: 0 0 0.5em 0;
+			color: var(--brand-accent);
+			font-weight: bold;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			font-size: 0.9em;
+		}
+		.title {
+			color: var(--brand-accent);
+		}
 
-			.title a {
-				color: #b17101;
-				text-decoration: underline;
-				font-weight: bold;
+		.title a {
+			color: var(--brand-accent);
+			text-decoration: underline;
+			font-weight: bold;
+		}
+		.image-wrapper {
+			display: inline-block;
+			padding: 1em;
+			border: 2px solid var(--brand-accent);
+			border-radius: 12px;
+			box-shadow: var(--box-shadow);
+		}
+	</style>
+	<div class="container my-8">
+		<div class="text-wrapper">
+			<p class="eyebrow">Out Now</p>
+			<h3 class="title">
+				New Single
+				<a
+					href="https://distrokid.com/hyperfollow/naylasalzmann/funny-pills"
+					target="_blank"
+				>
+					Funny Pills
+				</a>
+			</h3>
+		</div>
+		<div class="image-wrapper">
+			{
+				MainImage && (
+					<Image
+						class="release-img"
+						src={MainImage}
+						alt="Album cover"
+					/>
+				)
 			}
-		</style>
-	</head>
-	<body class="dark">
-		<Header />
-		<main>
-			<div class="container my-8">
-				<div class="text-wrapper">
-					<h3 class="title">
-						New Single 
-						<a
-							href="https://distrokid.com/hyperfollow/naylasalzmann/funny-pills"
-							target="_blank"
-						>
-							Funny Pills
-						</a>
-					</h3>
-				</div>
-				<div class="image-wrapper">
-					{
-						MainImage && (
-							<Image
-								class="release-img"
-								src={MainImage}
-								alt="Album cover"
-							/>
-						)
-					}
-				</div>
-			</div>
-			<Newsletter />
-		</main>
-		<Footer />
-	</body>
-</html>
+		</div>
+	</div>
+	<Newsletter />
+</BaseLayout>

@@ -4,6 +4,8 @@
 	--accent: #fff;
 	--accent-dark: #000d8a;
 	--yellow: #aa8800ff;
+	--brand-brown: rgb(157 69 39);
+	--brand-accent: #b17101;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -40,12 +42,6 @@ body {
 	/* color: rgb(var(--accent-dark)); */
 	font-size: 19px;
 	line-height: 1.7;
-}
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
 }
 h1,
 h2,
@@ -128,9 +124,6 @@ hr {
 @media (max-width: 720px) {
 	body {
 		font-size: 18px;
-	}
-	main {
-		padding: 1em;
 	}
 }
 
