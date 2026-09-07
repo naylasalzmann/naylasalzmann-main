@@ -1,0 +1,69 @@
+---
+import { SITE_TITLE, YOUTUBE_URL } from "../consts";
+import { Icon } from "astro-icon/components";
+---
+
+<div class="top-bar">
+  <h2 class="site-title"><a href="/">{SITE_TITLE}</a></h2>
+  <div class="social-cluster">
+    <a
+      href="https://instagram.com/naylasalzmann"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Follow Nayla Salzmann on Instagram</span>
+      <Icon name="instagram" size={20} />
+    </a>
+    <a
+      href="https://www.tiktok.com/@naylasalzmann"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Follow Nayla Salzmann on TikTok</span>
+      <Icon name="tiktok" size={20} />
+    </a>
+    <a href="https://twitter.com/naylasalzmann" target="_blank" rel="noopener">
+      <span class="sr-only">Follow Nayla Salzmann on Twitter</span>
+      <Icon name="twitter" size={20} />
+    </a>
+    <a href={YOUTUBE_URL} target="_blank" rel="noopener">
+      <span class="sr-only">Follow Nayla Salzmann on YouTube</span>
+      <Icon name="youtube" size={20} />
+    </a>
+  </div>
+</div>
+<style>
+  .top-bar {
+    display: none;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 1em;
+  }
+  .site-title {
+    margin: 0;
+    font-size: 1.4em;
+    text-align: center;
+  }
+  .site-title a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .social-cluster {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.75em;
+  }
+  .social-cluster a {
+    display: flex;
+    color: #fff;
+  }
+  @media (min-width: 721px) {
+    .top-bar {
+      display: flex;
+    }
+  }
+</style>
