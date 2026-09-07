@@ -1,64 +1,137 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Nayla Salzmann. All rights reserved.
-	Developed by Nayla Salzmann.
-	<div class="social-links">
-		<a href="https://instagram.com/naylasalzmann" target="_blank">
-			<span class="sr-only">Follow Nayla Salzmann on Instagram</span>
-			<Icon name="instagram" size={32} />
-		</a>
-		<a href="https://www.tiktok.com/@naylasalzmann" target="_blank">
-			<span class="sr-only">Follow Nayla Salzmann on TikTok</span>
-			<Icon name="tiktok" size={32} />
-		</a>
-		<a href="https://www.youtube.com/@naylasalzmann" target="_blank">
-			<span class="sr-only">Follow Nayla Salzmann on YouTube</span>
-			<Icon name="youtube" size={32} />
-		</a>
-		<a href="https://naylasalzmann.bandcamp.com" target="_blank">
-			<span class="sr-only">Follow Nayla Salzmann on Bandcamp</span>
-			<Icon name="bandcamp" size={32} />
-		</a>
-		<a href="https://soundcloud.com/nayla-salzmann" target="_blank">
-			<span class="sr-only">Follow Nayla Salzmann on SoundCloud</span>
-			<Icon name="soundcloud" size={32} />
-		</a>
-		<a href="https://open.spotify.com/artist/41J6ppdYoUtSogli4x9Jxo" target="_blank">
-			<span class="sr-only">Listen to Nayla Salzmann on Spotify</span>
-			<Icon name="spotify" size={32} />
-		</a>
-		<a href="https://music.apple.com/us/artist/nayla-salzmann/1789633277" target="_blank">
-			<span class="sr-only">Listen to Nayla Salzmann on Apple Music</span>
-			<Icon name="apple-music" size={32} />
-		</a>
-		<a href="https://twitter.com/naylasalzmann" target="_blank">
-			<span class="sr-only">Follow Nayla Salzmann on Twitter</span>
-			<Icon name="twitter" size={32} />
-		</a>
-	</div>
+  <div class="social-links">
+    <a
+      href="https://instagram.com/naylasalzmann"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Follow Nayla Salzmann on Instagram</span>
+      <Icon name="instagram" size={18} />
+    </a>
+    <a
+      href="https://www.tiktok.com/@naylasalzmann"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Follow Nayla Salzmann on TikTok</span>
+      <Icon name="tiktok" size={18} />
+    </a>
+    <a
+      href="https://www.youtube.com/@naylasalzmann"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Follow Nayla Salzmann on YouTube</span>
+      <Icon name="youtube" size={18} />
+    </a>
+    <a href="https://naylasalzmann.bandcamp.com" target="_blank" rel="noopener">
+      <span class="sr-only">Follow Nayla Salzmann on Bandcamp</span>
+      <Icon name="bandcamp" size={18} />
+    </a>
+    <a
+      href="https://soundcloud.com/nayla-salzmann"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Follow Nayla Salzmann on SoundCloud</span>
+      <Icon name="soundcloud" size={18} />
+    </a>
+    <a
+      href="https://open.spotify.com/artist/41J6ppdYoUtSogli4x9Jxo"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Listen to Nayla Salzmann on Spotify</span>
+      <Icon name="spotify" size={18} />
+    </a>
+    <a
+      href="https://music.apple.com/us/artist/nayla-salzmann/1789633277"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="sr-only">Listen to Nayla Salzmann on Apple Music</span>
+      <Icon name="apple-music" size={18} />
+    </a>
+    <a href="https://twitter.com/naylasalzmann" target="_blank" rel="noopener">
+      <span class="sr-only">Follow Nayla Salzmann on Twitter</span>
+      <Icon name="twitter" size={18} />
+    </a>
+  </div>
+  <form class="signup-form" action="#" method="post">
+    <!--
+			Placeholder action. Replace with the real Mailchimp embedded-form
+			endpoint once the audience/form exists, e.g.:
+			https://<dc>.list-manage.com/subscribe/post?u=<user-id>&id=<form-id>
+			Mailchimp's own embed snippet also includes a hidden bot-check
+			input with a specific name — add that alongside EMAIL below.
+		-->
+    <label for="footer-email" class="sr-only">Email address</label>
+    <input
+      id="footer-email"
+      name="EMAIL"
+      type="email"
+      placeholder="Your email"
+      required
+    />
+    <button type="submit">Join</button>
+  </form>
+  <p class="copyright">
+    &copy; {today.getFullYear()} Nayla Salzmann. All rights reserved.
+  </p>
 </footer>
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  footer {
+    padding: 2em 1em;
+    background: linear-gradient(var(--gray-gradient)) no-repeat;
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.75em;
+    margin-bottom: 1.25em;
+  }
+  .social-links a {
+    text-decoration: none;
+    color: rgb(var(--gray));
+  }
+  .social-links a:hover {
+    color: rgb(var(--gray-dark));
+  }
+  .signup-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    max-width: 360px;
+    margin: 0 auto 1.25em;
+  }
+  .signup-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5em 0.75em;
+    border: 1px solid var(--brand-accent);
+    border-radius: 4px;
+  }
+  .signup-form button {
+    padding: 0.5em 1.25em;
+    border: 1px solid var(--brand-accent);
+    border-radius: 4px;
+    background: var(--brand-accent);
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    cursor: pointer;
+  }
+  .copyright {
+    margin: 0;
+    font-size: 0.75em;
+    color: rgb(var(--gray));
+  }
 </style>
